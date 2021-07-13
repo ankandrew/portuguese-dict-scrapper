@@ -22,6 +22,11 @@ definition = p.get_definition()
 
 # Show synonyms & definition
 p.show()
+
+# Change word
+p.look_up('casa')
+# Show new word definition & synonyms
+p.show()
 ```
 
 #### Output for 'coco'
@@ -42,3 +47,4 @@ Plural: cocos
 - [ ] Fine-grain definition (i.e. gender)
 - [ ] Scrape examples
 - [ ] Scrape sentences
+- [ ] Interactive args

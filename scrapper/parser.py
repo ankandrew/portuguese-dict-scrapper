@@ -5,7 +5,7 @@ from .loader import Loader
 
 class Parser:
     """
-    Parse and clean give bs4 tags
+    Parse and clean given bs4 tags
     """
 
     def __init__(self, word_lookup: str) -> None:

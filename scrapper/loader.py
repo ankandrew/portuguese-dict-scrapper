@@ -24,6 +24,8 @@ class Loader:
         :param word_lookup: Word to look up in portuguese dictionary
         :return: dict containing bs4 Tags for synonyms, definition, etc
         """
+        if not word_lookup:
+            return None
         url = f'{self.BASE_URL}/{word_lookup}'
         request = requests.get(url, headers=self.HEADER)
         if request.status_code == 404:

@@ -8,7 +8,7 @@ class Parser:
     Parse and clean given bs4 tags
     """
 
-    def __init__(self, word_lookup: str) -> None:
+    def __init__(self, word_lookup: str = None) -> None:
         self.loader = Loader()
         self.load_result = self.loader.request(word_lookup)
 
@@ -38,8 +38,3 @@ class Parser:
         definition = self.get_definition()
         for d in definition:
             print(d)
-
-    # # REMOVE
-    # @staticmethod
-    # def clean_str(s: str) -> str:
-    #     return s.strip().replace('\n', '')

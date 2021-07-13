@@ -1,4 +1,5 @@
 from typing import Dict
+import re
 
 import requests
 from bs4 import BeautifulSoup
@@ -32,7 +33,13 @@ class Loader:
             print('Palabra no encontrada!')
             return None
         soup = BeautifulSoup(request.text, 'html.parser')
-        synonyms, definition = soup.find_all('p', class_='adicional', limit=2)
+        # synonyms, definition = soup.find_all('p', class_='adicional', limit=2)
+        definition = soup.find('h2', text=re.compile('Definição de'))
+        if definition is not None:
+            definition = definition.parent.p
+        synonyms = soup.find('h2', text=re.compile('Sinônimos de'))
+        if synonyms is not None:
+            synonyms = synonyms.parent.p
         out = {
             'synonyms': synonyms,
             'definition': definition

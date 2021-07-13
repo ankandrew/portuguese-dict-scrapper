@@ -4,11 +4,6 @@ import requests
 from bs4 import BeautifulSoup
 
 
-# TODO
-#   * Add Frases
-#   * Add Exemplos
-#   * Add Rimas
-
 class Loader:
     """
     Sends a requests to dicio.com.br
@@ -33,7 +28,7 @@ class Loader:
         request = requests.get(url, headers=self.HEADER)
         if request.status_code == 404:
             print('Palabra no encontrada!')
-            return
+            return None
         soup = BeautifulSoup(request.text, 'html.parser')
         synonyms, definition = soup.find_all('p', class_='adicional', limit=2)
         out = {

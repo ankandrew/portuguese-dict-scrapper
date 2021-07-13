@@ -20,11 +20,19 @@ class Parser:
 
     def get_synonyms(self) -> List:
         synonyms = self.load_result.get('synonyms')
-        return [a.text for a in synonyms.find_all('a')]
+        if synonyms is not None:
+            synonyms = [a.text for a in synonyms.find_all('a')]
+        else:
+            synonyms = ['N/A']
+        return synonyms
 
     def get_definition(self) -> List:
         definition = self.load_result.get('definition')
-        return [text.strip() for text in definition.text.strip().split('\n')]
+        if definition is not None:
+            definition = [text.strip() for text in definition.text.strip().split('\n')]
+        else:
+            definition = ['N/A']
+        return definition
 
     def show(self) -> None:
         """
